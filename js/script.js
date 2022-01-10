@@ -1,17 +1,45 @@
+let currentNumber = 0;
+
 function addAlbum() {
-  var newRow = document.createElement("tr");
-  var artistName = document.createElement("td");
-  var albumName = document.createElement("td");
-  var albumYear = document.createElement("td");
+  if (openForm() == true) {
+    let albumID = generateElementID();
+    console.log(currentNumber);
 
-  artistName.innerHTML = "New Artist";
-  albumName.innerHTML = "New Album";
-  albumYear.innerHTML = "New Year";
+    const row = document.createElement("tr");
+    const artist = document.createElement("td");
+    const album = document.createElement("td");
+    const year = document.createElement("td");
 
-  newRow.appendChild(artistName);
-  newRow.appendChild(albumName);
-  newRow.appendChild(albumYear);
+    row.id = albumID;
+    artist.innerHTML = document.getElementById("addArtist").value;
+    album.innerHTML = document.getElementById("addAlbum").value;
+    year.innerHTML = document.getElementById("addYear").value;
 
-  var artistList = document.getElementById("album-list");
-  artistList.appendChild(newRow);
+    row.appendChild(artist);
+    row.appendChild(album);
+    row.appendChild(year);
+
+    document.querySelector(".table").appendChild(row);
+  }
+}
+
+function openForm() {
+  if (document.getElementById("addForm").style.visibility == "visible") {
+    return true;
+  } else {
+    document.getElementById("addForm").style.visibility = "visible";
+    return false;
+  }
+}
+
+function generateElementID() {
+  return currentNumber++;
+}
+
+function deleteAlbum() {
+  // add code
+}
+
+function editAlbum() {
+  // add code
 }
