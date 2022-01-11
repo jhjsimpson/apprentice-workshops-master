@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script async defer src="js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <div class="form-row align-items-center">
-        <form id="addForm">
-            <input type="text" class="form-control mb-2" id="addArtist" value="Artist">
-            <input type="text" class="form-control mb-2" id="addAlbum" value="Album">
-            <input type="text" class="form-control mb-2" id="addYear" value="Year">
+    <div id="form-album">
+        <form>
+            <input type="text" id="addArtist" value="Artist">
+            <input type="text" id="addAlbum" value="Album">
+            <input type="text" id="addYear" value="Year">
         </form>
-        <button type="button" class="btn btn-info" onclick="addAlbum()">Add album</button>
+    </div>
+    <div class="button-row">
+    <button type="button" onclick="addAlbum()">Add album</button>
     </div>
     <div>
-        <table class="table">
-            <thead class="thead-dark">
+        <table id="table-albums">
+            <thead class="thead-title">
               <tr>
                 <th scope="col">Artist</th>
                 <th scope="col">Album</th>
@@ -28,21 +29,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr id="first">
+              <!-- <tr id="first">
                 <td>Anna</td>
                 <td>Sova</td>
                 <td>2019</td>
+                <td><button type="button" id="1" onclick="editAlbum(this.id)">Edit</button></td>
+                <td><button type="button" id="1" onclick="deleteAlbum(this.id)">Delete</button></td>
               </tr>
               <tr id="second">
                 <td>Artist Other</td>
                 <td>Other album</td>
                 <td>2018</td>
+                <td><button type="button" id="2" onclick="editAlbum(this.id)">Edit</button></td>
+                <td><button type="button" id="2" onclick="deleteAlbum(this.id)">Delete</button></td>
               </tr>
               <tr id="third">
                 <td>Another one</td>
                 <td>Better album</td>
                 <td>2020</td>
-              </tr>
+                <td><button type="button" id="3" onclick="editAlbum(this.id)">Edit</button></td>
+                <td><button type="button" id="3" onclick="deleteAlbum(this.id)">Delete</button></td>
+              </tr> -->
             </tbody>
           </table>
     </div>
