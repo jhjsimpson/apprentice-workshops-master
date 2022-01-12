@@ -54,8 +54,9 @@ function deleteAlbum(rowId) {
   albumCollection.splice(index, 1);
 }
 
-function editAlbum() {
-  // add code
+function editAlbum(rowId) {
+  let item = albumCollection.find((x) => x.ID == rowId);
+  console.log(item);
 }
 
 function addToAlbums(albumInfo) {
