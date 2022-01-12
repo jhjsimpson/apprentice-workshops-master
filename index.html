@@ -9,23 +9,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="form-album">
+    <div class="form">
         <form>
             <input type="text" id="addArtist" value="Artist">
             <input type="text" id="addAlbum" value="Album">
             <input type="text" id="addYear" value="Year">
         </form>
+        <button type="button" onclick="addAlbum()" id="addBtn">Add</button>
     </div>
     <div class="button-row">
-    <button type="button" onclick="addAlbum()">Add album</button>
+    
     </div>
     <div>
         <table id="table-albums">
             <thead class="thead-title">
               <tr>
-                <th scope="col">Artist</th>
-                <th scope="col">Album</th>
-                <th scope="col">Year</th>
+                <th scope="col" id="col1">Artist</th>
+                <th scope="col" id="col2">Album</th>
+                <th scope="col" id="col3">Year</th>
+                <th scope="col" id="col4"></th>
+                <th scope="col" id="col5"></th>
+                
               </tr>
             </thead>
             <tbody>

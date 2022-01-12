@@ -50,19 +50,12 @@ function addAlbum() {
 function deleteAlbum(rowId) {
   let item = albumCollection.find((x) => x.ID == rowId);
   let index = albumCollection.indexOf(item);
-
-  console.log(index);
-
   document.getElementById("table-albums").deleteRow(index + 1);
   albumCollection.splice(index, 1);
 }
 
 function editAlbum() {
-  // let item = albumCollection.find((x) => x.ID == rowId);
-  // let index = albumCollection.indexOf(item);
-  // console.log(index);
-  // document.getElementById("table-albums").deleteRow(index + 1);
-  // albumCollection.splice(index, 1);
+  // add code
 }
 
 function addToAlbums(albumInfo) {
