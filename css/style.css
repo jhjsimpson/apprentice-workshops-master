@@ -70,7 +70,7 @@ select {
 .inCellInput {
   margin: 0px;
   border: none;
-  background: transparent;
+  background-color: none;
   height: 30px;
   padding: 4px;
 }
