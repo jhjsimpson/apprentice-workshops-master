@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <script async defer src="js/script.js"></script>
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <div class="form">
-        <form>
-            <input class="addField" type="text" id="addArtist" value="Artist">
-            <input class="addField" type="text" id="addAlbum" value="Album">
-            <input class="addField" type="text" id="addYear" value="Year">
-        </form>
-        <button type="button" onclick="addAlbum()" id="addBtn">Add</button>
+      <form>
+        <input class="addField" type="text" id="addArtist" value="Artist" />
+        <input class="addField" type="text" id="addAlbum" value="Album" />
+        <input class="addField" type="text" id="addYear" value="Year" />
+      </form>
+      <button type="button" onclick="addAlbum()" id="addBtn">Add</button>
     </div>
-    <div class="button-row">
-    
-    </div>
+    <div class="button-row"></div>
     <div>
-        <table id="table-albums">
-            <thead class="thead-title">
-              <tr>
-                <th scope="col" id="col1">Artist</th>
-                <th scope="col" id="col2">Album</th>
-                <th scope="col" id="col3">Year</th>
-                <th scope="col" id="col4"></th>
-                <th scope="col" id="col5"></th>
-                
-              </tr>
-            </thead>
-            <tbody id="table-body">
-            </tbody>
-          </table>
+      <table id="table-albums">
+        <thead class="thead-title">
+          <tr>
+            <th scope="col" id="col1">Artist</th>
+            <th scope="col" id="col2">Album</th>
+            <th scope="col" id="col3">Year</th>
+            <th scope="col" id="col4"></th>
+            <th scope="col" id="col5"></th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
     </div>
 
-</script></body>
+    <script src="js/config.js"></script>
+    <script src="js/server.js"></script>
+    <script src="js/stubs.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

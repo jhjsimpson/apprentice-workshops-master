@@ -1,5 +1,5 @@
-const albumCollection = [];
-let currentrowID = 0;
+let albumCollection = [];
+let currentRowID = 0;
 
 function addAlbum() {
   const row = document.createElement("tr");
@@ -12,22 +12,22 @@ function addAlbum() {
   editBtn.appendChild(document.createTextNode("Save"));
   deleteBtn.appendChild(document.createTextNode("Delete"));
 
-  const artistOb = document.getElementById("addArtist").value;
-  const albumOb = document.getElementById("addAlbum").value;
-  const yearOb = document.getElementById("addYear").value;
+  const artistObject = document.getElementById("addArtist").value;
+  const albumObject = document.getElementById("addAlbum").value;
+  const yearObject = document.getElementById("addYear").value;
 
   let rowID = generaterowID();
 
   let albumInfo = {
-    ID: rowID,
-    artist: artistOb,
-    album: albumOb,
-    year: yearOb,
+    id: rowID,
+    artistName: artistObject,
+    albumName: albumObject,
+    albumYear: yearObject,
   };
 
-  artist.innerHTML = albumInfo.artist;
-  album.innerHTML = albumInfo.album;
-  year.innerHTML = albumInfo.year;
+  artist.innerHTML = albumInfo.artistName;
+  album.innerHTML = albumInfo.albumName;
+  year.innerHTML = albumInfo.albumYear;
 
   row.appendChild(artist);
   row.appendChild(album);
@@ -49,7 +49,7 @@ function addAlbum() {
 }
 
 function deleteAlbum(rowID) {
-  let item = albumCollection.find((x) => x.ID == rowID);
+  let item = albumCollection.find((x) => x.id == rowID);
   let index = albumCollection.indexOf(item);
 
   document.getElementById("table-albums").deleteRow(index + 1);
@@ -58,11 +58,12 @@ function deleteAlbum(rowID) {
 }
 
 function editAlbum(rowID) {
-  let item = albumCollection.find((x) => x.ID == rowID);
+  let item = albumCollection.find((x) => x.id == rowID);
   let index = albumCollection.indexOf(item);
-  item.artist = document.getElementById("addArtist").value;
-  item.album = document.getElementById("addAlbum").value;
-  item.year = document.getElementById("addYear").value;
+
+  item.artistName = document.getElementById("addArtist").value;
+  item.albumName = document.getElementById("addAlbum").value;
+  item.albumYear = document.getElementById("addYear").value;
 
   albumCollection[index] = item;
 
@@ -84,10 +85,10 @@ function editAlbum(rowID) {
 
     let rowID = generaterowID();
 
-    object.ID = rowID;
-    artist.innerHTML = object.artist;
-    album.innerHTML = object.album;
-    year.innerHTML = object.year;
+    object.id = rowID;
+    artist.innerHTML = object.artistName;
+    album.innerHTML = object.albumName;
+    year.innerHTML = object.albumYear;
 
     row.appendChild(artist);
     row.appendChild(album);
@@ -112,6 +113,38 @@ function addToAlbums(albumInfo) {
 }
 
 function generaterowID() {
-  currentrowID++;
-  return currentrowID;
+  currentRowID++;
+  return currentRowID;
 }
+
+function refreshAndUpdateTable(data) {
+  let table = document.getElementById("table-albums");
+  let tableElements = table.length;
+  for (i = tableElements; i > 1; i--) {
+    table.deleteRow(1);
+  }
+
+  // Horrible repetitive code
+
+  data.forEach((object) => {});
+
+  // add data to rows and
+}
+
+// functions that can switch between the stubs and server
+// uses functions in code to refresh the array and page (CRUD)
+//
+
+window.onload = function () {
+  if (config.isStubbed == false) {
+    albumCollection = [];
+    stubbedData.item1.forEach((element) => {
+      albumCollection.push(element);
+    });
+    console.log(albumCollection);
+  }
+
+  if (config.isStubbed == true) {
+    getMusicians_server();
+  }
+};
