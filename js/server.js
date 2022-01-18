@@ -22,14 +22,14 @@ function addMusician_server() {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+
     body: JSON.stringify(parseFormContents()),
   })
     .then((response) => response.json())
     .then(() => {
       console.log("Created new musician");
-      clearForm();
-      hideForm();
-      getMusicians();
+
+      refreshPage();
     })
     .catch((error) => console.error("Unable to add musician", error));
 }
