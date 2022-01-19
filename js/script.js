@@ -14,7 +14,7 @@ function addAlbum() {
   const row = createRowForAlbumTable(rowId, artistName, albumName, albumYear);
   let albumTable = document.getElementById("table-albums");
   albumTable.appendChild(row);
-  addAlbumToAlbumList(rowId, artistName, albumName, albumYear);
+  addAlbum_Server(rowId, artistName, albumName, albumYear);
 }
 
 function deleteAlbum(rowId) {
@@ -25,8 +25,6 @@ function deleteAlbum(rowId) {
 }
 
 function editAlbum(rowId) {
-  console.log(rowId);
-  console.log(albumCollection);
   let item = albumCollection.find((x) => x.id == rowId);
   let index = albumCollection.indexOf(item);
 
@@ -34,6 +32,7 @@ function editAlbum(rowId) {
   item.albumName = document.getElementById("addAlbum").value;
   item.albumYear = document.getElementById("addYear").value;
   albumCollection[index] = item;
+
   const rowCount = document.getElementById("table-albums").rows.length;
   for (i = rowCount; i > 1; i--) {
     document.getElementById("table-albums").deleteRow(1);
@@ -51,6 +50,7 @@ function editAlbum(rowId) {
     let albumTable = document.getElementById("table-albums");
     albumTable.appendChild(row);
   });
+  editMusician_server(rowId);
 }
 
 function refreshAndUpdateTable(data) {
@@ -72,20 +72,6 @@ function refreshAndUpdateTable(data) {
     let albumTable = document.getElementById("table-albums");
     albumTable.appendChild(row);
   });
-}
-
-function parseFormContents() {
-  const rowId = generateRowId();
-  console.log(rowId);
-  artist = document.getElementById("addArtist").value;
-  album = document.getElementById("addAlbum").value;
-  year = document.getElementById("addYear").value;
-  return {
-    id: rowId,
-    artistName: artist,
-    albumName: album,
-    albumYear: year,
-  };
 }
 
 function createRowForAlbumTable(rowId, artistName, albumName, albumYear) {
@@ -137,7 +123,31 @@ window.onload = function () {
   }
 };
 
-function addAlbumToAlbumList(rowId, artistName, albumName, albumYear) {
+function parseFormContents() {
+  const rowId = generateRowId();
+  artistName = document.getElementById("addArtist").value;
+  albumName = document.getElementById("addAlbum").value;
+  albumYear = document.getElementById("addYear").value;
+  return {
+    id: rowId,
+    artistName: artistName,
+    albumName: albumName,
+    albumYear: albumYear,
+  };
+}
+
+function parseFormContents_Edit() {
+  artistName = document.getElementById("addArtist").value;
+  albumName = document.getElementById("addAlbum").value;
+  albumYear = document.getElementById("addYear").value;
+  return {
+    artistName: artistName,
+    albumName: albumName,
+    albumYear: albumYear,
+  };
+}
+
+function addAlbum_Server(rowId, artistName, albumName, albumYear) {
   let albumInfo = {
     id: rowId,
     artistName: artistName,
@@ -146,9 +156,12 @@ function addAlbumToAlbumList(rowId, artistName, albumName, albumYear) {
   };
   albumCollection.push(albumInfo);
   if (config.isStubbed == false) {
-    // add stub
+    stubbedData.item1.push(albumInfo);
+    console.log(stubbedData.item1);
   }
   if (config.isStubbed == true) {
     addMusician_server();
   }
 }
+
+function editAlbum_Server(rowId) {}
